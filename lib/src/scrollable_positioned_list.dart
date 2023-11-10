@@ -43,7 +43,7 @@ class ScrollablePositionedList extends StatefulWidget {
     Key? key,
     this.itemScrollController,
     this.shrinkWrap = false,
-    this.isScrollUp = false,
+    this.keepPosition = false,
     ItemPositionsListener? itemPositionsListener,
     this.scrollOffsetController,
     ScrollOffsetListener? scrollOffsetListener,
@@ -73,7 +73,7 @@ class ScrollablePositionedList extends StatefulWidget {
     required this.separatorBuilder,
     Key? key,
     this.shrinkWrap = false,
-    this.isScrollUp = false,
+    this.keepPosition = false,
     this.itemScrollController,
     ItemPositionsListener? itemPositionsListener,
     this.scrollOffsetController,
@@ -96,7 +96,7 @@ class ScrollablePositionedList extends StatefulWidget {
         scrollOffsetNotifier = scrollOffsetListener as ScrollOffsetNotifier?,
         super(key: key);
 
-  final bool isScrollUp;
+  final bool keepPosition;
 
   /// Number of items the [itemBuilder] can produce.
   final int itemCount;
@@ -380,7 +380,7 @@ class _ScrollablePositionedListState extends State<ScrollablePositionedList>
   @override
   void didUpdateWidget(ScrollablePositionedList oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.initialScrollIndex != null && !widget.isScrollUp) {
+    if (widget.initialScrollIndex != null && !widget.keepPosition) {
         primary.alignment = widget.initialAlignment;
         primary.target = widget.initialScrollIndex;
         primary.scrollController.jumpTo(widget.initialScrollIndex.toDouble());
