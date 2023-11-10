@@ -381,8 +381,9 @@ class _ScrollablePositionedListState extends State<ScrollablePositionedList>
   void didUpdateWidget(ScrollablePositionedList oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.initialScrollIndex != null && !widget.isScrollUp) {
-        primary.scrollController.jumpTo(widget.initialScrollIndex.toDouble());
+        primary.alignment = widget.initialAlignment;
         primary.target = widget.initialScrollIndex;
+        primary.scrollController.jumpTo(widget.initialScrollIndex.toDouble());
       return;
     }
     if (oldWidget.itemScrollController?._scrollableListState == this) {
