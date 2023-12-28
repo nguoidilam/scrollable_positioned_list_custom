@@ -383,7 +383,7 @@ class _ScrollablePositionedListState extends State<ScrollablePositionedList>
     if (widget.initialScrollIndex != null && widget.keepPosition) {
         primary.alignment = widget.initialAlignment;
         primary.target = widget.initialScrollIndex;
-        primary.scrollController.jumpTo(widget.initialScrollIndex.toDouble());
+        _jumpTo(index: widget.initialScrollIndex, alignment: widget.initialAlignment);
       return;
     }
     if (oldWidget.itemScrollController?._scrollableListState == this) {
